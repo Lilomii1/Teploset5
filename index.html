@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Теплосеть - Система управления</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- XLSX (Excel) -->
     <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
-    <!-- jsPDF + autoTable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -71,7 +66,6 @@
     <!-- ================= ОСНОВНОЕ ПРИЛОЖЕНИЕ ================= -->
     <div id="appMain" class="app-main" style="display:none;">
         
-        <!-- Боковое меню -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <i class="fas fa-temperature-high"></i>
@@ -103,7 +97,6 @@
             </div>
         </aside>
 
-        <!-- Основной контент -->
         <main class="main-content">
             <header class="topbar">
                 <div>
@@ -337,6 +330,10 @@
                         <select id="ticketType">
                             <option value="emergency">Аварийная</option>
                             <option value="planned">Плановая</option>
+                            <option value="repair">Ремонтная</option>
+                            <option value="diagnostic">Диагностика</option>
+                            <option value="adjustment">Наладка</option>
+                            <option value="other">Прочее</option>
                         </select>
                         <select id="ticketFacility"></select>
                         <select id="ticketBrigade"></select>
@@ -345,6 +342,12 @@
                             <option value="medium">Средний</option>
                             <option value="high">Высокий</option>
                             <option value="critical">Критический</option>
+                        </select>
+                        <select id="ticketStatus">
+                            <option value="new">Новая</option>
+                            <option value="in_progress">В работе</option>
+                            <option value="completed">Завершена</option>
+                            <option value="cancelled">Отменена</option>
                         </select>
                         <textarea id="ticketDesc" placeholder="Описание заявки"></textarea>
                         <div class="form-actions">
@@ -527,13 +530,12 @@
                     </div>
                 </div>
 
-                <!-- СТРАНИЦА: ОТЧЕТЫ (С ПЕРИОДОМ) -->
+                <!-- СТРАНИЦА: ОТЧЕТЫ -->
                 <div class="page" id="page-reports">
                     <div class="page-header">
                         <h2>Отчеты</h2>
                     </div>
 
-                    <!-- БЛОК ВЫБОРА ПЕРИОДА (ДОБАВЛЕН) -->
                     <div class="report-filter" style="margin-bottom: 20px; padding: 15px; background: #f1f5f9; border-radius: 12px; border: 1px solid #cbd5e1;">
                         <h3 style="margin: 0 0 15px 0; color: #0f172a;">📅 Выбор периода для отчета</h3>
                         <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
@@ -620,7 +622,7 @@
     </div>
 
     <!-- Модальное окно подтверждения -->
-    <div id="modalOverlay" class="modal-overlay">
+    <div id="modalOverlay" class="modal-overlay" style="display:none;">
         <div class="modal-card">
             <h3 id="modalTitle">Подтверждение</h3>
             <p id="modalMessage">Вы уверены?</p>
@@ -634,7 +636,6 @@
     <!-- Контейнер для уведомлений -->
     <div id="toastContainer" class="toast-container"></div>
 
-    <!-- Подключение логики -->
     <script src="script.js"></script>
 </body>
 </html>
